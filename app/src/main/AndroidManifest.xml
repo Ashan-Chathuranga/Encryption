@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EncryptedChat">
+        <activity android:name=".Activities.ChatActivity"></activity>
         <activity
             android:name=".Activities.ProfileInfoActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".Activities.PhoneNumberVerification"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
@@ -24,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity"></activity>
+        <activity android:name=".Activities.MainActivity" />
     </application>
 
 </manifest>

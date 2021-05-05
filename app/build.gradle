@@ -56,4 +56,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation "com.github.pgreze:android-reactions:1.5.1"
+    implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
+
+    implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
+
+    implementation 'com.devlomi:circularstatusview:1.0.1'
 }

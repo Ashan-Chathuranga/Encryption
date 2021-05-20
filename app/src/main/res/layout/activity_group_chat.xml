@@ -46,12 +46,6 @@
                 android:layout_marginRight="12dp"
                 app:srcCompat="@drawable/ic_attachment" />
 
-            <ImageView
-                android:id="@+id/camera"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginRight="12dp"
-                app:srcCompat="@drawable/ic_camera" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -57,6 +58,8 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -148,6 +151,8 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String messageTxt = binding.messageBox.getText().toString();
 
+                messageTxt = AES256.encrypt(messageTxt);
+
                 Date date = new Date();
                 Message message = new Message(messageTxt, senderUid, date.getTime());
                 binding.messageBox.setText("");
@@ -155,7 +160,7 @@ public class ChatActivity extends AppCompatActivity {
                 String randomKey = database.getReference().push().getKey();
 
                 HashMap<String, Object> lastMsgObj = new HashMap<>();
-                lastMsgObj.put("lastMsg", message.getMessage());
+                lastMsgObj.put("lastMsg",AES256.decrypt(message.getMessage()) );
                 lastMsgObj.put("lastMsgTime", date.getTime());
 
                 database.getReference().child("chats").child(senderRoom).updateChildren(lastMsgObj);
@@ -249,6 +254,8 @@ public class ChatActivity extends AppCompatActivity {
 
                                         String messageTxt = binding.messageBox.getText().toString();
 
+                                        messageTxt = AES256.encrypt(messageTxt);
+
                                         Date date = new Date();
                                         Message message = new Message(messageTxt, senderUid, date.getTime());
                                         message.setMessage("photo");
@@ -258,7 +265,7 @@ public class ChatActivity extends AppCompatActivity {
                                         String randomKey = database.getReference().push().getKey();
 
                                         HashMap<String, Object> lastMsgObj = new HashMap<>();
-                                        lastMsgObj.put("lastMsg", message.getMessage());
+                                        lastMsgObj.put("lastMsg", AES256.decrypt(message.getMessage()) );
                                         lastMsgObj.put("lastMsgTime", date.getTime());
 
                                         database.getReference().child("chats").child(senderRoom).updateChildren(lastMsgObj);

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.example.encryptedchat.Adapters.GroupMessagesAdapter;
 import com.example.encryptedchat.Adapters.MessagesAdapter;
@@ -50,6 +51,9 @@ public class GroupChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+
         binding = ActivityGroupChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -94,6 +98,8 @@ public class GroupChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String messageTxt = binding.messageBox.getText().toString();
+
+                messageTxt = AES256.encrypt(messageTxt);
 
                 Date date = new Date();
                 Message message = new Message(messageTxt, senderUid, date.getTime());

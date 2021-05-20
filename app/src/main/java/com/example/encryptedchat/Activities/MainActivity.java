@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.encryptedchat.Adapters.TopStatusAdapter;
@@ -53,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -234,8 +238,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.search:
                 Toast.makeText(this,"search clicked",Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.settings:
-                Toast.makeText(this, "settings clicked", Toast.LENGTH_SHORT).show();
+            case R.id.logout:
+                startActivity(new Intent(MainActivity.this, ProfileView.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

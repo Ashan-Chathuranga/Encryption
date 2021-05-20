@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.encryptedchat">
 
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EncryptedChat">
-        <activity android:name=".Activities.GroupChatActivity"></activity>
+        <activity android:name=".Activities.FingerprintAuth"></activity>
+        <activity android:name=".Activities.ProfileView" />
+        <activity android:name=".Activities.GroupChatActivity" />
         <activity
             android:name=".Activities.ChatActivity"
-            android:theme="@style/Theme.EncryptedChat.NoActionBar"></activity>
+            android:theme="@style/Theme.EncryptedChat.NoActionBar" />
         <activity
             android:name=".Activities.ProfileInfoActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
@@ -29,21 +33,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MainActivity" />
-
-
-        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
-     See README(https://goo.gl/l4GJaQ) for more. -->
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_baseline_send_24" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/Text_color" />
-
-
-
     </application>
 
 </manifest>
